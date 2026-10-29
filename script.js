@@ -3,17 +3,17 @@
   var WA_NUMBER = '966575095422';
   var doc = document.documentElement;
   doc.classList.add('js');
-
+ 
   function $(s, c) { return (c || document).querySelector(s); }
   function $$(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
   function waLink(msg) { return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg); }
-
+ 
   /* WhatsApp links */
   $$('[data-wa]').forEach(function (a) { a.href = waLink(a.getAttribute('data-wa')); });
-
+ 
   /* Year */
   var y = $('#year'); if (y) y.textContent = new Date().getFullYear();
-
+ 
   /* Header scroll + progress + active link */
   var header = $('#header'), bar = $('#progress');
   var sections = $$('main section[id]');
@@ -33,7 +33,7 @@
     if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
   }, { passive: true });
   onScroll();
-
+ 
   /* Mobile menu */
   var burger = $('#burger'), nav = $('#nav'), scrim = $('#scrim'), bIc = $('#burger-ic');
   function setMenu(open) {
@@ -51,7 +51,7 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
     window.addEventListener('resize', function () { if (window.innerWidth > 960) setMenu(false); });
   }
-
+ 
   /* Reveal on scroll */
   var rev = $$('.reveal');
   if ('IntersectionObserver' in window) {
@@ -62,7 +62,7 @@
   } else {
     rev.forEach(function (el) { el.classList.add('in'); });
   }
-
+ 
   /* FAQ accordion */
   $$('.faq__q').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -75,7 +75,7 @@
       if (!open) { btn.setAttribute('aria-expanded', 'true'); item.classList.add('open'); }
     });
   });
-
+ 
   /* Button ripple */
   $$('.btn').forEach(function (b) {
     b.addEventListener('pointerdown', function (e) {
@@ -89,7 +89,7 @@
       setTimeout(function () { sp.remove(); }, 600);
     });
   });
-
+ 
   /* Card tilt (mouse devices only) */
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -104,7 +104,7 @@
       c.addEventListener('mouseleave', function () { c.style.transform = ''; });
     });
   }
-
+ 
   /* Order form */
   var form = $('#order-form');
   if (form) {
@@ -146,3 +146,4 @@
     });
   }
 })();
+ 
